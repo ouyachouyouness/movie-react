@@ -27,6 +27,23 @@ function ListOfMovies() {
                   
        
     }
+    const decriment = (id) => {
+
+            
+
+        const t = films.map((movie) => {
+
+            if(movie.id === id){
+                movie.likes+=1
+                console.log(movie.likes);
+                setFilms(movie)
+            }
+            
+            
+        })     
+          
+
+}
 
     const OnDelete = (id) => {
       
