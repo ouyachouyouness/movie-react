@@ -1,0 +1,62 @@
+body {
+  background-color: #eee;
+}
+
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  padding: 10px;
+}
+
+.MoviesContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+}
+
+.movieCard {
+  align-items: center;
+  height: 23rem;
+  width: 245px;
+  margin: 20px 25px 5px 20px;
+}
+
+.imageContainer {
+  border: 1px solid black;
+  height: 300px;
+  width: 244px;
+  border-radius: 5%;
+  overflow: hidden;
+  box-shadow: 0 0px 10px 5px rgba(0, 0, 0, 0.3);
+  transition: ease 0.3s;
+}
+
+.MoviesContainer .imageContainer:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.movieDetailsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 60rem;
+  margin: 10px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+a {
+  padding: 1%;
+}
