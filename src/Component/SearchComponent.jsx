@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
+// import { movies } from "../db/movies";
 //import { fetchData } from "../Actions/ApiCall";
 const useStyles = makeStyles({
   searchInputLight: {
@@ -13,30 +14,41 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SearchComponent({ setMovies }) {
-  const [typedInMovieTitle, setTypedInMovieTitle] = useState("");
+// export default function SearchComponent({ setMovies }) {
+//   const [typedInMovieTitle, setTypedInMovieTitle] = useState("");
 
-  const classes = useStyles();
+//   const classes = useStyles();
 
-  function onChange(event) {
-    setTypedInMovieTitle(event.target.value);
-  }
+//   function onChange(event) {
+//     setTypedInMovieTitle(event.target.value);
+//   }
 
-  useEffect(() => {
-    if (typedInMovieTitle) {
-      //fetchData(typedInMovieTitle, setMovies);
-    }
-  }, [typedInMovieTitle]);
+//   useEffect(() => {
+//     if (typedInMovieTitle) {
+//       //fetchData(typedInMovieTitle, setMovies);
+//     }
+//   }, [typedInMovieTitle]);
 
-  return (
-    <div className={classes.searchInputLight}>
-      <TextField
-        label="Search"
-        variant="outlined"
-        onChange={onChange}
-        size="small"
-        className={classes.inputLight}
-      />
-    </div>
-  );
-}
+
+
+
+// function searchMovie({movie}){
+
+//   const [state, setState] = useState()
+  
+//   const handleChange = (e) => {
+//     setState({category: e.target.value})
+//   }
+
+//   return (
+//     <div>
+//       <select className="app-select" onChange={handleChange}>
+//             <option id="Default"></option>
+//             <option id="Comedy">Comedy</option>
+//             <option id="Animation">Animation</option>
+//             <option id="Thriller">Thriller</option>
+//             <option id="Drame">Drame</option>
+//           </select>
+//     </div>
+//   );
+//   }

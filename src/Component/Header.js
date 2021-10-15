@@ -4,6 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import ToolBar from "@material-ui/core/ToolBar";
 import { makeStyles } from "@material-ui/core/styles";
 import { RiMovie2Line } from "react-icons/ri";
+import { createTheme } from '@material-ui/core/styles'
 
 import {
   Switch,

@@ -1,65 +1,66 @@
-import React, {useState, useEffect} from 'react'
-import { movies } from '../db/movies'
-import MovieItem from './MovieItem'
+import React, { useState, useEffect } from "react";
+import MovieItem from "./MovieItem";
 
+function ListOfMovies({ category }) {
+  const [films, setFilms] = useState([]);
 
-
-
-
-function ListOfMovies() {
-
-    const [films, setFilms] = useState(movies)
-    
-    const OnLikeIncr = (id) => {
-
-            
-
-                const t = films.map((movie) => {
-
-                    if(movie.id === id){
-                        movie.likes+=1
-                        console.log(movie.likes);
-                        setFilms(movie)
-                    }
-                    
-                    
-                })     
-                  
-       
+  const getFilms = async () => {
+    try {
+      let { movies } = await import("../db/movies");
+      setFilms(movies);
+    } catch (e) {
+      console.log(e);
     }
-    const decriment = (id) => {
+  };
 
-            
+  useEffect(() => {
+    getFilms();
+  }, []);
 
-        const t = films.map((movie) => {
+  const [state, setState] = useState({
+    category: "",
+  });
 
-            if(movie.id === id){
-                movie.likes+=1
-                console.log(movie.likes);
-                setFilms(movie)
-            }
-            
-            
-        })     
-          
+  const handleChange = (e) => {
+    setState({ category: e.target.value });
+    console.log(state.category);
+    // films.filter(movies =>  movies.category.includes(state.category)).slice(0,4).map((id) => (<MovieItem {...id}  />))
+    films.filter((movie) => movie.category !== state.category);
+    setFilms(films);
+  };
 
+  const OnDelete = (id) => {
+    if (window.confirm("are you sure")) {
+      const newMovies = films.filter((movie) => movie.id !== id);
+      setFilms(newMovies);
+    }
+  };
+
+  const Filter = () => {
+    films
+      .filter((movies) => movies.category.includes(state.category))
+      .slice(0, 4)
+      .map((id) => <MovieItem {...id} />);
+  };
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+      }}
+    >
+      {films?.map((movie) => (
+        <MovieItem
+          key={movie.id}
+          OnDelete={OnDelete}
+          movie={movie}
+          handleChange={handleChange}
+        />
+      ))}
+    </div>
+  );
 }
 
-    const OnDelete = (id) => {
-      
-   if(window.confirm ("are you sure")){
-       const newMovies = films.filter((movie) => movie.id !== id )
-        setFilms(newMovies)}
-        
-    
-    }
-    
-    return (
-        <div className="card-deck">
-            
-            {films && films.map((movie)=>(<MovieItem OnDelete={OnDelete} OnLikeIncr={OnLikeIncr} movie={movie}/>))}
-        </div>
-    )
-}
-
-export default ListOfMovies
+export default ListOfMovies;
