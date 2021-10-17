@@ -5,6 +5,7 @@ function MovieItem({ movie, OnDelete }) {
   const [toggleLikeDislike, setToggleLikeDislike] = useState(false);
   const [likes, setLikes] = useState(movie.likes);
   const [dislikes, setDislikes] = useState(movie.dislikes);
+  const [counter, setCounter] = useState(0);
 
   const toggleLikeDislikeHandler = () => {
     setToggleLikeDislike(!toggleLikeDislike);

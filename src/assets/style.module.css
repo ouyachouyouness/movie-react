@@ -77,3 +77,7 @@ a {
 .button2 {
   background-color: #008cba;
 } /* Blue */
+
+.App {
+  margin: "0.5cm";
+}

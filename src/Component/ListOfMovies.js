@@ -109,7 +109,7 @@ function ListOfMovies() {
           className="form-control form-control-lg "
           onChange={(e) => filter(e)}
         >
-          <option value="allCategories">all categories</option>
+          <option value="allCategories">All categories</option>
           {categories?.map((category) => (
             <option key={category} value={category}>
               {category}
