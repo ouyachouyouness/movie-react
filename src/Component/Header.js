@@ -4,11 +4,10 @@ import AppBar from "@material-ui/core/AppBar";
 import ToolBar from "@material-ui/core/ToolBar";
 import { makeStyles } from "@material-ui/core/styles";
 import { RiMovie2Line } from "react-icons/ri";
-import { createTheme } from '@material-ui/core/styles'
+import { createTheme } from "@material-ui/core/styles";
 
 import {
   Switch,
-  createMuiTheme,
   ThemeProvider,
   CssBaseline,
   Typography,
@@ -31,7 +30,7 @@ export default function Header({ setDark }) {
   const [darkMode, setDarkMode] = useState(false);
 
   const classes = useStyles();
-  const theme = createMuiTheme({
+  const theme = createTheme({
     palette: {
       type: darkMode ? "dark" : "light",
     },

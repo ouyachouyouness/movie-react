@@ -1,13 +1,14 @@
 import React, { Fragment, useState, useEffect } from "react";
-import style from "../assets/style.module.css";
 
 function MovieItem({ movie, OnDelete }) {
+  //some state
   const [toggleLike, setToggleLike] = useState(false);
   const [toggleDidLike, setToggleDidLike] = useState(false);
   const [likes, setLikes] = useState(movie.likes);
   const [dislikes, setDislikes] = useState(movie.dislikes);
   const [counter, setCounter] = useState(0);
 
+  //this method(toogle) is for increment like and dislike
   const toggleLikeHandler = () => {
     if (counter === 1) {
       setLikes((prev) => prev + 1);
@@ -19,6 +20,8 @@ function MovieItem({ movie, OnDelete }) {
     setToggleLike(!toggleLike);
     setToggleDidLike(false);
   };
+
+  //this method(toogle) is for increment dislike if counter equal to one that mean the button was already cliqued else 
   const toggleDislikeHandler = () => {
     if (counter === 1) {
       setDislikes((prev) => prev + 1);
@@ -50,7 +53,7 @@ function MovieItem({ movie, OnDelete }) {
 
           <div style={{ marginLeft: "5cm" }}>
             <button
-              class="btn btn-outline-success"
+              class="btn btn-success"
               style={{ width: "40%", margin: "0.5cm" }}
               onClick={toggleLikeHandler}
               disabled={toggleLike}
@@ -58,7 +61,7 @@ function MovieItem({ movie, OnDelete }) {
               Like
             </button>
             <button
-              class="btn btn-outline-primary"
+              class="btn btn-primary"
               style={{ width: "40%" }}
               onClick={toggleDislikeHandler}
               disabled={toggleDidLike}
@@ -67,7 +70,7 @@ function MovieItem({ movie, OnDelete }) {
             </button>
 
             <button
-              class="btn btn-outline-danger"
+              class="btn btn-danger"
               style={{ width: "40%", margin: "0.5cm" }}
               onClick={() => OnDelete(movie.id)}
             >

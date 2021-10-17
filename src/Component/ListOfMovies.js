@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch,useSelector} from "react-redux";
+import { useDispatch } from "react-redux";
 import MovieItem from "./MovieItem";
 import Pagination from "react-js-pagination";
-import { makeStyles } from "@material-ui/core/styles";
-import { Typography } from "@material-ui/core";
 import { GET_MOVIES } from "../Actions/Action";
 
 const itemsCountPerPage = 4;
@@ -61,41 +59,6 @@ function ListOfMovies() {
     //   .slice(0, 4)
     //   .map((id) => <MovieItem {...id} />);
   };
-
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      minHeight: "75vh",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    typography: {
-      fontWeight: "bold",
-      width: "100%",
-      fontSize: "clamp(3.5vh, 2.6vw, 15vw);",
-      color: "black",
-      textAlign: "center",
-    },
-    inputContainer: {
-      display: "flex",
-      flexWrap: "wrap",
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    SearchInput: {
-      width: "30rem",
-      margin: "0.5rem 0.25rem",
-    },
-    button: {
-      padding: "11px 15px",
-      fontWeight: "bold",
-      backgroundColor: "hsl(203, 89%, 53%)",
-      margin: "0.5rem 0.25rem",
-    },
-    goBackButton: { marginRight: "auto" },
-    scrollToTop: { marginLeft: "auto" },
-  }));
 
   const handlePageChange = (pageNumber) => {
     setActivePage(pageNumber);
