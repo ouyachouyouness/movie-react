@@ -2,35 +2,51 @@ import React, { Fragment, useState, useEffect } from "react";
 import style from "../assets/style.module.css";
 
 function MovieItem({ movie, OnDelete }) {
-  const [toggleLikeDislike, setToggleLikeDislike] = useState(false);
+  const [toggleLike, setToggleLike] = useState(false);
+  const [toggleDidLike, setToggleDidLike] = useState(false);
   const [likes, setLikes] = useState(movie.likes);
   const [dislikes, setDislikes] = useState(movie.dislikes);
   const [counter, setCounter] = useState(0);
 
-  const toggleLikeDislikeHandler = () => {
-    setToggleLikeDislike(!toggleLikeDislike);
-  };
 
-  useEffect(() => {
-    if (toggleLikeDislike) {
+  const toggleLikeHandler = () => {
+    if (counter === 1) {
       setLikes((prev) => prev + 1);
       setDislikes((prev) => prev - 1);
     } else {
+      setLikes((prev) => prev + 1);
+    }
+    setCounter(1);
+    setToggleLike(!toggleLike);
+    setToggleDidLike(false);
+  
+  };
+  const toggleDislikeHandler = () => {
+    if (counter === 1) {
       setDislikes((prev) => prev + 1);
       setLikes((prev) => prev - 1);
+    } else {
+      setDislikes((prev) => prev + 1);
     }
-  }, [toggleLikeDislike]);
+    setCounter(1);
+    setToggleDidLike(!toggleDidLike);
+    setToggleLike(false);
+  };
+
+  useEffect(() => {
+  
+  }, [toggleLike, toggleDidLike, counter]);
 
   return (
     <Fragment>
       <div className="App" style={{ margin: "0.5cm" }}>
         <div className="card" style={{ backgroundColor: "#778899" }}>
           <div className="card-body">
-            <h3 className="card-title">{movie.title}</h3>
-            <p className="card-text">{movie.category}</p>
+            <h2 className="card-title">{movie.title}</h2>
             <p className="card-text">
-              <small className="text-muted">Last updated 3 mins ago</small>
+              <h3>{movie.category}</h3>
             </p>
+
             <p className="card-text">
               Like : {likes} Dislike : {dislikes}
             </p>
@@ -40,16 +56,16 @@ function MovieItem({ movie, OnDelete }) {
             <button
               class="btn btn-outline-success"
               style={{ width: "40%", margin: "0.5cm" }}
-              onClick={toggleLikeDislikeHandler}
-              disabled={toggleLikeDislike}
+              onClick={toggleLikeHandler}
+              disabled={toggleLike}
             >
               Like
             </button>
             <button
               class="btn btn-outline-primary"
               style={{ width: "40%" }}
-              onClick={toggleLikeDislikeHandler}
-              disabled={!toggleLikeDislike}
+              onClick={toggleDislikeHandler}
+              disabled={toggleDidLike}
             >
               Dislike
             </button>

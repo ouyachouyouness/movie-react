@@ -92,7 +92,7 @@ function ListOfMovies() {
       (pageNumber - 1) * itemsCountPerPage,
       pageNumber * itemsCountPerPage,
     ]);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -139,21 +139,25 @@ function ListOfMovies() {
             ))
         )}
       </div>
-      <Typography>
-        {filmsPerCategory?.length} results, {films?.length / itemsCountPerPage}{" "}
-        per page
-      </Typography>
 
-      <div>
+      <div style={{ marginLeft: "45%" }}>
+        <Typography>
+          {filmsPerCategory?.length} results,{" "}
+          {films?.length / itemsCountPerPage} per page
+        </Typography>
         {films.length !== 0 && (
           <Pagination
             activePage={activePage}
             itemsCountPerPage={itemsCountPerPage}
             totalItemsCount={films.length}
-            pageRangeDisplayed={itemsCountPerPage / 2}
+            pageRangeDisplayed={
+              filmsPerCategory.length > 4 ? itemsCountPerPage : 1
+            }
+            nextClassName="disabled"
             onChange={handlePageChange}
             itemClass="page-item"
             linkClass="page-link"
+            disableInitialCallback={true}
           />
         )}
       </div>
