@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch,useSelector} from "react-redux";
 import MovieItem from "./MovieItem";
 import Pagination from "react-js-pagination";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
+import { GET_MOVIES } from "../Actions/Action";
 
 const itemsCountPerPage = 4;
 function ListOfMovies() {
+  //case using redux store for managing the data
+  //const films = useSelector((state)=>state.moviesReducer)
+  const dispatch = useDispatch();
   const [films, setFilms] = useState([]);
+
   const [filmsPerCategory, setFilmsPerCategory] = useState([]);
   const [categories, setCategories] = useState([]);
   const [activePage, setActivePage] = useState(1);
@@ -16,6 +22,11 @@ function ListOfMovies() {
     try {
       let { movies } = await import("../db/movies");
       setFilms(movies);
+      //just for testing that redux go
+      dispatch({
+        type: GET_MOVIES,
+        payload: movies,
+      });
 
       /*to eliminate duplicate categories */
       let allCategories = [];
@@ -141,10 +152,6 @@ function ListOfMovies() {
       </div>
 
       <div style={{ marginLeft: "45%" }}>
-        <Typography>
-          {filmsPerCategory?.length} results,{" "}
-          {films?.length / itemsCountPerPage} per page
-        </Typography>
         {films.length !== 0 && (
           <Pagination
             activePage={activePage}
