@@ -8,7 +8,6 @@ function MovieItem({ movie, OnDelete }) {
   const [dislikes, setDislikes] = useState(movie.dislikes);
   const [counter, setCounter] = useState(0);
 
-
   const toggleLikeHandler = () => {
     if (counter === 1) {
       setLikes((prev) => prev + 1);
@@ -19,7 +18,6 @@ function MovieItem({ movie, OnDelete }) {
     setCounter(1);
     setToggleLike(!toggleLike);
     setToggleDidLike(false);
-  
   };
   const toggleDislikeHandler = () => {
     if (counter === 1) {
@@ -33,9 +31,7 @@ function MovieItem({ movie, OnDelete }) {
     setToggleLike(false);
   };
 
-  useEffect(() => {
-  
-  }, [toggleLike, toggleDidLike, counter]);
+  useEffect(() => {}, [toggleLike, toggleDidLike, counter]);
 
   return (
     <Fragment>
