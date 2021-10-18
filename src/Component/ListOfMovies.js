@@ -40,6 +40,7 @@ function ListOfMovies() {
     getFilms();
   }, []);
 
+  //Delete Movies
   const OnDelete = (id) => {
     if (window.confirm("are you sure")) {
       const newMovies = films.filter((movie) => movie.id !== id);
@@ -47,6 +48,7 @@ function ListOfMovies() {
     }
   };
 
+  //Filter movies by categories
   const filter = (e) => {
     if (e.target.value === "allCategories") {
       setFilmsPerCategory([]);
@@ -60,6 +62,7 @@ function ListOfMovies() {
     //   .map((id) => <MovieItem {...id} />);
   };
 
+  //Pagination
   const handlePageChange = (pageNumber) => {
     setActivePage(pageNumber);
     setBounds([
@@ -100,12 +103,14 @@ function ListOfMovies() {
         }}
       >
         {filmsPerCategory.length !== 0 ? (
+          //get movies with categories
           <div>
             {filmsPerCategory?.slice(bounds[0], bounds[1]).map((movie) => (
               <MovieItem key={movie.id} OnDelete={OnDelete} movie={movie} />
             ))}
           </div>
         ) : (
+          //get all movies with pagination four
           films
             ?.slice(bounds[0], bounds[1])
             .map((movie) => (

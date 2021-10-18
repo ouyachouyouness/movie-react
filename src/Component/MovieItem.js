@@ -21,7 +21,7 @@ function MovieItem({ movie, OnDelete }) {
     setToggleDidLike(false);
   };
 
-  //this method(toogle) is for increment dislike if counter equal to one that mean the button was already cliqued else 
+  //this method(toogle) is for increment dislike if counter equal to one that mean the button was already cliqued else
   const toggleDislikeHandler = () => {
     if (counter === 1) {
       setDislikes((prev) => prev + 1);

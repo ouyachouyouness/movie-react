@@ -23,11 +23,11 @@ export default function Footer() {
         <span>
           Open source by{" "}
           <a
-            href="https://github.com/M-JARIDI"
+            href="https://github.com/ouyachouyouness"
             target="_blank"
             rel="noreferrer"
           >
-            {" "}
+            {"Ouyachou Younes "}
           </a>
           <span> &copy; 2021</span>
         </span>
